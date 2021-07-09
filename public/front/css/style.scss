@@ -43,6 +43,7 @@
   max-height: 80vh;
   overflow: hidden;
   position: relative;
+  z-index: 0;
   .slider-btn{
     padding: 10px;
     position: absolute;
@@ -65,7 +66,7 @@
     display: flex;
     justify-content: flex-start;
     .tab-btn{
-        border: 0.15rem solid var(--secondary-color); 
+        border: 0.15rem solid var(--secondary-color);
         color:var(--secondary-color);
         background:white;
         border-radius: 3px;
@@ -105,11 +106,15 @@
     margin:15px;
     li{
       padding:7px 3px ;
-      &::marker{
-          content: "▶";
+      a{
+          text-decoration: none;
           color: var(--secondary-color);
-          
-      }
+        }
+        &::marker{
+            content: "▶";
+            color: var(--secondary-color);
+
+        }
     }
   }
 }
@@ -149,10 +154,13 @@
   padding:15px 0px;
   border-bottom:1px solid #c7c7c7;
   .news-title{
-    font-weight: 600;
-    font-size:20px;
-    color:var(--secondary-color);
-    padding-bottom:5px;
+      a{
+          font-weight: 600;
+          font-size:20px;
+          color:var(--secondary-color);
+          padding-bottom:5px;
+          text-decoration: none;
+      }
   }
   .news-date{
     font-size: 14px;
@@ -220,9 +228,9 @@
 }
 @media (max-width: 768px) {
   .slider-item{
-   
+
     .slider-btn{
-     
+
       bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
@@ -248,7 +256,7 @@
       .about-name{
         color:var(--primary-color);
         // padding:10px 0px;
-        font-size:20px;
+        font-size:16px;
       }
     }
     .quote{
@@ -270,14 +278,13 @@
     .about-paragraph{
       text-align: justify;
     }
-  
+
   }
   .container-custom{
     margin:0px 5px;
   }
 
   .single-news{
-    
     .news-title{
       font-weight: 600;
       font-size:20px;
@@ -328,3 +335,123 @@
     }
   }
 }
+
+.breadcrumb-area {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    &:after {
+       position: absolute;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       display: none;
+       color: #FFF;
+   }
+   &:after {
+       display: block;
+       background: rgba(0, 0, 0, .6);
+   }
+   .breadcrumb-overlay{
+     background: rgba(0, 0, 0, .6);
+     height: 200px;
+   }
+   @media (max-width: 768px){
+   .breadcrumb-overlay{
+    height: 180px;
+ }
+ }
+ }
+
+ @media (max-width: 768px){
+    .member{
+        margin: 10px;
+    }
+ }
+
+
+.member{
+    .square-img{
+        position: relative;
+            overflow:hidden;
+            padding-bottom:100%;
+        img{
+            position:absolute;
+            top:0px;
+            left:0px;
+            right:0px;
+            overflow:hidden;
+        }
+    }
+    border-radius:5px;
+    overflow:hidden;
+    box-shadow:0px 0px 10px 0px rgba(0,0,0,0.3);
+    .name{
+        font-weight:600;
+        text-align:center;
+        padding:5px 5px 0px 5px;
+    }
+    .desig{
+        padding:5px;
+        text-align:center;
+    }
+}
+    @media only screen and (max-width: 767px) {
+      .breadcrumb-area {
+        height: 180px; } }
+    .breadcrumb-area .breadcrumb-content h2 {
+      color: #ffffff;
+      font-size: 30px;
+      text-transform: uppercase;
+      display: block; }
+      @media only screen and (max-width: 767px) {
+        .breadcrumb-area .breadcrumb-content h2 {
+          font-size: 24px; } }
+    .breadcrumb-area .breadcrumb-content .breadcrumb {
+      background-color: transparent;
+      padding: 0;
+      margin-bottom: 0; }
+      .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item::before {
+        color: #ffffff; }
+      .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item.active {
+        color: #ffbb38;
+        font-size: 16px;
+        font-weight: 600; }
+      .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item a {
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: 600; }
+        .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item a:hover {
+          color: #ffbb38; }
+
+// video page
+        iframe{
+            width: 100% !important;
+        }
+
+        .widget-text {
+            border-bottom: 1px solid #d7d7d7;
+            position: relative;
+            color: #5a5a5a;
+            font-size: 33px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            text-transform: capitalize;
+            font-weight: 600;
+            &:after {
+                background-color: #ec9831;
+                bottom: -2px;
+                content: "";
+                display: block;
+                height: 4px;
+                left: 0;
+                position: absolute;
+                width: 220px;
+            }
+
+        }
+
+
+
+

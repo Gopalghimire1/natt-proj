@@ -2,7 +2,7 @@
 @section('title','Activites listing')
 @section('content')
 <div class="header"  style="background:#890E4F; color:#ffffff; height:55px; ">
-    <center><p style="padding:20px; font-size:18px; font-family:">Boardinfo Listing</h3></p>
+    <center><p style="padding:20px; font-size:18px; font-family:">Activities Listing</h3></p>
 </div>
 
 <div class="container" >

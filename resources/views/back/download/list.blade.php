@@ -34,7 +34,7 @@
         <table class="table table-border cell-border">
             <tr>
                 <th>Image</th>
-                <th>Link</th>
+                <th>Title</th>
                 <th>Action</th>
             </tr>
             @foreach ($download as $adv)

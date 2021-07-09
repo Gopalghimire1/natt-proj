@@ -1,31 +1,28 @@
 <div class="p-3">
-    <?php
-    for ($i = 0; $i < 5; $i++) {
-    ?>
-        <div class="single-news">
-            <div class="news-title">
-                Hello World
-            </div>
-            <div class="news-date">
-                &#128197; 10th feb,2021
-            </div>
-            <div>a
-                <div class="row">
-                    <div class="col-4 text-center">a
-                        <img src="slider.jpg" class="news-image" alt="">
-                    </div>
-                    <div class="col-8 d-flex align-items-center">
-                        <div class="news-text">
+   @foreach ($news as $new)
 
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum nulla, modi possimus numquam a quam quae dicta quia veritatis aspernatur ducimus dolores ullam sequi quidem dolor cumque. Debitis, quo fugit!
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+   <div class="single-news">
+       <div class="news-title">
+           <a href="{{ route('news.single',$new->id)}}">{{ $new->title }}</a>
+       </div>
+       <div class="news-date">
+           &#128197; {{ $new->published}}
+       </div>
+       <div>
+           <div class="row">
+               <div class="col-4 text-center">
+                   <img src="{{ asset($new->image) }}" class="news-image w-100" alt="">
+               </div>
+               <div class="col-8 d-flex align-items-center">
+                   <div class="news-text">
+                        {!! $new->descr !!}
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   @endforeach
 
-    <?php
-    }
-    ?>
+
 
 </div>

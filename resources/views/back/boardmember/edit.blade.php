@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <button class="button success">Submit data</button>
-                        <input type="button" class="button" value="Cancel" onclick="window.location.href='/admin/board/list/'">
+                        <input type="button" class="button" value="Cancel" onclick="window.location.href='{{ route('admin.board.index')}}'">
                     </div>
             </form>
 

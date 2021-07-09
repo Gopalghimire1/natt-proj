@@ -28,7 +28,7 @@ class NewsController extends Controller
         $news->published = $parsed['published'];
         $news->descr = $parsed['descr'];
         $news->galary_id = $parsed['galary_id'];
-        $news->image = $parsed['image']->store('back/img/notice');
+        $news->image = $parsed['image']->store('back/img/news');
         $news->save();
         return redirect()->back()->with('success','News added successfully !');
     }
@@ -48,7 +48,7 @@ class NewsController extends Controller
         $news->descr = $parsed['descr'];
         $news->galary_id = $parsed['galary_id'];
         if($request->has('image')){
-            $news->image = $parsed['image']->store('news');
+            $news->image = $parsed['image']->store('back/img/news');
         }
         $news->save();
         return redirect()->back()->with('success','News updated successfully !');

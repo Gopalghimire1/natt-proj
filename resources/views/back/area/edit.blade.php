@@ -2,7 +2,7 @@
 @section('title','Activites edit')
 @section('content')
 <div class="header"  style="background:#890E4F; color:#ffffff; height:55px; margin:0px;">
-    <center><p style="padding:20px; font-size:18px; font-family:"> Lofcal Area Edit</h3></p>
+    <center><p style="padding:20px; font-size:18px; font-family:"> Activity Edit</h3></p>
 </div>
  <section class="container">
  <div class="row" style=" padding:2rem;" >

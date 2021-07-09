@@ -100,11 +100,25 @@
     </li>
 
     <li>
-    <a href="/admin/supporter/">
+        <a href="{{ route('admin.patner.index')}}">
+                <span class="icon"><span class="mif-organization"></span></span>
+                <span class="caption">Patners</span>
+            </a>
+    </li>
+
+    <li>
+        <a href="{{ route('admin.menu.index')}}">
+                <span class="icon"><span class="mif-organization"></span></span>
+                <span class="caption">Menus</span>
+            </a>
+    </li>
+
+    <li>
+    {{-- <a href="/admin/supporter/">
             <span class="icon"><span class="mif-envelop"></span></span>
             <span class="caption">Supporters</span>
         </a>
-    </li>
+    </li> --}}
 
     <li>
     <a href="/admin/messages/">

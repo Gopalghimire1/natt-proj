@@ -11,6 +11,10 @@
 </head>
 
 <body>
+    @php
+        $menu = App\Models\Menu::all();
+        $menuCount = App\Models\Menu::count();
+    @endphp
     @include('front.layouts.header')
 
  @yield('content')

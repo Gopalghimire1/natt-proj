@@ -50,6 +50,7 @@
   max-height: 80vh;
   overflow: hidden;
   position: relative;
+  z-index: 0;
 }
 
 .slider-item .slider-btn {
@@ -129,6 +130,11 @@
   padding: 7px 3px;
 }
 
+.updates .updates-list li a {
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+
 .updates .updates-list li::marker {
   content: "▶";
   color: var(--secondary-color);
@@ -172,11 +178,12 @@
   border-bottom: 1px solid #c7c7c7;
 }
 
-.single-news .news-title {
+.single-news .news-title a {
   font-weight: 600;
   font-size: 20px;
   color: var(--secondary-color);
   padding-bottom: 5px;
+  text-decoration: none;
 }
 
 .single-news .news-date {
@@ -289,7 +296,7 @@
   }
   .min-about .about-title .about-name {
     color: var(--primary-color);
-    font-size: 20px;
+    font-size: 16px;
   }
   .min-about .quote {
     color: var(--black-color);
@@ -356,36 +363,145 @@
     height: 30px;
   }
 }
-/*# sourceMappingURL=style.css.map */
+
 .breadcrumb-area {
-    position: relative;
-    /* z-index: 1; */
-    width: 100%;
-    height: 255px; }
-    @media only screen and (max-width: 767px) {
-      .breadcrumb-area {
-        height: 180px; } }
-    .breadcrumb-area .breadcrumb-content h2 {
-      color: #ffffff;
-      font-size: 30px;
-      text-transform: uppercase;
-      display: block; }
-      @media only screen and (max-width: 767px) {
-        .breadcrumb-area .breadcrumb-content h2 {
-          font-size: 24px; } }
-    .breadcrumb-area .breadcrumb-content .breadcrumb {
-      background-color: transparent;
-      padding: 0;
-      margin-bottom: 0; }
-      .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item::before {
-        color: #ffffff; }
-      .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item.active {
-        color: #ffbb38;
-        font-size: 16px;
-        font-weight: 600; }
-      .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item a {
-        font-size: 16px;
-        color: #ffffff;
-        font-weight: 600; }
-        .breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item a:hover {
-          color: #ffbb38; }
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.breadcrumb-area:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  color: #FFF;
+}
+
+.breadcrumb-area:after {
+  display: block;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.breadcrumb-area .breadcrumb-overlay {
+  background: rgba(0, 0, 0, 0.6);
+  height: 200px;
+}
+
+@media (max-width: 768px) {
+  .breadcrumb-area .breadcrumb-overlay {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .member {
+    margin: 10px;
+  }
+}
+
+.member {
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+}
+
+.member .square-img {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.member .square-img img {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+.member .name {
+  font-weight: 600;
+  text-align: center;
+  padding: 5px 5px 0px 5px;
+}
+
+.member .desig {
+  padding: 5px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .breadcrumb-area {
+    height: 180px;
+  }
+}
+
+.breadcrumb-area .breadcrumb-content h2 {
+  color: #ffffff;
+  font-size: 30px;
+  text-transform: uppercase;
+  display: block;
+}
+
+@media only screen and (max-width: 767px) {
+  .breadcrumb-area .breadcrumb-content h2 {
+    font-size: 24px;
+  }
+}
+
+.breadcrumb-area .breadcrumb-content .breadcrumb {
+  background-color: transparent;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+.breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item::before {
+  color: #ffffff;
+}
+
+.breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item.active {
+  color: #ffbb38;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item a {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.breadcrumb-area .breadcrumb-content .breadcrumb .breadcrumb-item a:hover {
+  color: #ffbb38;
+}
+
+iframe {
+  width: 100% !important;
+}
+
+.widget-text {
+  border-bottom: 1px solid #d7d7d7;
+  position: relative;
+  color: #5a5a5a;
+  font-size: 33px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.widget-text:after {
+  background-color: #ec9831;
+  bottom: -2px;
+  content: "";
+  display: block;
+  height: 4px;
+  left: 0;
+  position: absolute;
+  width: 220px;
+}
+/*# sourceMappingURL=style.css.map */

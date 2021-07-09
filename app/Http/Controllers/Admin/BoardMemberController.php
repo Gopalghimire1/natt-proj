@@ -37,10 +37,11 @@ class BoardMemberController extends Controller
     }
 
     public function update(Request $request, $id){
+        // dd($request->all());
         $parsed = $request->all();
         $board=Board::where('id',$id)->first();
         $board->startdate = $parsed['startdate'];
-        $board->enddate = $parsed[' enddate'];
+        $board->enddate = $parsed['enddate'];
         $board->active = $parsed['active'];
         $board->save();
         return redirect()->back()->with('success','Board Update successfully !');

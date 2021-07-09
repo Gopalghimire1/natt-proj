@@ -13,11 +13,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front.index');
-});
+Route::get('/','FrontController@index')->name('home');
+
 Route::get('/about-us','FrontController@aboutUs')->name('about');
 Route::get('/contact-us','FrontController@contactUs')->name('contact');
+Route::get('/videos','FrontController@videos')->name('videos');
+Route::get('/galleries','FrontController@gallery')->name('gallery');
+Route::get('/downloads','FrontController@downloads')->name('download');
+
+Route::get('/page/{id}','FrontController@dynamicPage')->name('page');
+
+
+Route::prefix('news')->name('news.')->group(function () {
+     Route::get('/','NewsEventController@newsList')->name('list');
+     Route::get('/{id}/','NewsEventController@singleNews')->name('single');
+});
+
+Route::prefix('event')->name('event.')->group(function () {
+    Route::get('/','NewsEventController@eventList')->name('list');
+    Route::get('/{id}/','NewsEventController@singleEvent')->name('single');
+});
+
+Route::prefix('members')->name('member.')->group(function () {
+    Route::get('/','MemberController@memberList')->name('list');
+    Route::get('/board','MemberController@boardMember')->name('board');
+
+});
 
 
 Route::match(['get', 'post'], 'login', 'AuthController@login')->name('login');
@@ -25,6 +46,10 @@ Route::match(['get', 'post'], 'logout', 'AuthController@logout')->name('logout')
 
 Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function () {
     Route::get('/','AuthController@dashboard')->name('dashboard');
+    Route::get('/config','ConfigController@index')->name('config');
+    Route::post('/config/store','ConfigController@store')->name('configs.store');
+    Route::post('/change-pass','AuthController@changePass')->name('password.change');
+
 
     Route::prefix('news')->name('news.')->group(function () {
         Route::get('/','Admin\NewsController@index')->name('index');
@@ -75,14 +100,14 @@ Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function
         Route::post('/manage/member/del/','Admin\BoardMemberController@manageMemberDel')->name('manage.member.del');
     });
 
-    // Route::prefix('commitee')->name('commitee.')->group(function () {
-    //     Route::get('/','Admin\CommiteeController@index')->name('index');
-    //     Route::get('/add/','Admin\CommiteeController@create')->name('create');
-    //     Route::post('/store','Admin\CommiteeController@store')->name('store');
-    //     Route::get('/edit/{id}/','Admin\CommiteeController@edit')->name('edit');
-    //     Route::post('/update/{id}','Admin\CommiteeController@update')->name('update');
-    //     Route::get('/del/{id}/','Admin\CommiteeController@delete')->name('delete');
-    // });
+    Route::prefix('menu')->name('menu.')->group(function () {
+        Route::get('/','Admin\MenuController@index')->name('index');
+        Route::get('/add/','Admin\MenuController@create')->name('create');
+        Route::post('/store','Admin\MenuController@store')->name('store');
+        Route::get('/del/{id}/','Admin\MenuController@delete')->name('delete');
+        Route::get('/manage/{id}/','Admin\MenuController@manage')->name('manage');
+        Route::post('/manage/update/{id}','Admin\MenuController@manageUpdate')->name('manage.update');
+    });
 
     Route::prefix('gallery')->name('gallery.')->group(function () {
         Route::get('/','Admin\GalleryController@index')->name('index');
@@ -102,6 +127,15 @@ Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function
         Route::get('/edit/{id}/','Admin\AdvController@edit')->name('edit');
         Route::post('/update/{id}','Admin\AdvController@update')->name('update');
         Route::get('/del/{id}/','Admin\AdvController@delete')->name('delete');
+    });
+
+    Route::prefix('patner')->name('patner.')->group(function () {
+        Route::get('/','Admin\PatnerController@index')->name('index');
+        Route::get('/add/','Admin\PatnerController@create')->name('create');
+        Route::post('/store','Admin\PatnerController@store')->name('store');
+        Route::get('/edit/{id}/','Admin\PatnerController@edit')->name('edit');
+        Route::post('/update/{id}','Admin\PatnerController@update')->name('update');
+        Route::get('/del/{id}/','Admin\PatnerController@delete')->name('delete');
     });
 
 

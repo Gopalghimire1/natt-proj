@@ -1,23 +1,22 @@
 @extends('front.layouts.app')
 @section('content')
-<div class="owl-carousel">
-    <?php
-        for ($i=0; $i < 5; $i++) { ?>
 
+  {{-- <div class="owl-carousel" style="z-index: 0 !important;">
         <div class="slider-item">
             <img class="w-100" src="{{ asset('front/img/slider.jpg') }}" alt="">
             <button class="slider-btn">
             view More
             </button>
         </div>
-    <?php } ?>
-  </div>
-
-
+  </div> --}}
 
   <div class="container-custom">
+      <div class="mt-2">
+          <h2 class="widget-text">Welcome</h2>
+          <img class="w-100" src="{{ asset(custom_config('banner_image')->value) }}" alt="">
+      </div>
     <div class="row my-3">
-      <div class="col-lg-6 h-350">
+      <div class="col-lg-5 h-350">
         <div class="tabs h-100" id="main-tab">
           <div class="tab-btn-bar" >
             <button class="tab-btn active" data-of="main-tab" data-for="news">News</button>
@@ -26,8 +25,8 @@
           </div>
           <div class="tab-container">
             <div class="tab-item active" id="news">@include('front.news')</div>
-            <div class="tab-item " id="events">@include('front.news')</div>
-            <div class="tab-item " id="activity">@include('front.news')</div>
+            <div class="tab-item " id="events">@include('front.event')</div>
+            <div class="tab-item " id="activity">@include('front.activity')</div>
           </div>
         </div>
       </div>
@@ -36,39 +35,83 @@
           <div class="updates-title">
             Updates
           </div>
-          <marquee behavior="" direction="up">
-            <?php
-              for ($i=0; $i < 5; $i++) { ?>
-                <ul class="updates-list">
-                  <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ul>
-               <?php } ?>
+          <marquee behavior="" onmouseover="this.stop();" onmouseout="this.start();" direction="up">
+              @foreach ($news as $item)
+              <ul class="updates-list">
+                <li> <a href="{{ route('news.single',$item->id)}}">{{ $item->title }}</a></li>
+              </ul>
+              @endforeach
           </marquee>
         </div>
-        <div class="min-about">
-          <div class="about-title">
-            <div>
 
-              About org
+        <div class="theme-video mt-3">
+            <div class="video">
+                {!! custom_config('theme_video')->value !!}
+            </div>
+          {{-- <div class="about-title">
+            <div>
+                About NATTA
             </div>
             <div class="about-name">
-              Need Technosoft pvt ltd
+                NEPAL ASSOCIATION OF TOUR AND TRAVEL AGENTS
             </div>
 
-          </div>
-          <div class="quote">
+          </div> --}}
+          {{-- <div class="quote">
             <span>
-
               &ldquo;
             </span>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut repellendus impedit magni .
+            Fifty years have elapsed since NEPAL ASSOCIATION OF TOUR & TRAVEL AGENTS (NATTA) came into existence.
 
           </div>
-          <p class="about-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi, quibusdam reprehenderit? Voluptatem dolorum quisquam deleniti in molestiae excepturi sunt eligendi eveniet dolorem iure, earum maiores, facere hic eaque voluptates alias?</p>
-          <p class="about-paragraph">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Animi, quibusdam reprehenderit? Voluptatem dolorum quisquam deleniti in molestiae excepturi sunt eligendi eveniet dolorem iure, earum maiores, facere hic eaque voluptates alias?</p>
+          {!! custom_config('about')->value !!} --}}
         </div>
       </div>
-      <div class="col-md-2"></div>
+      @if ($advs->count()>0)
+        <div class="col-md-3">
+            @foreach ($advs as $item)
+            @if ($item->link != null)
+                <div class="mb-3">
+                    <a href="{{ $item->link }}}}"><img class="w-100" style="height: 150px;" src="{{ asset($item->image) }}" alt=""></a>
+                </div>
+            @else
+                <div class="mb-3">
+                    <img class="w-100" style="height: 150px;" src="{{ asset($item->image) }}" alt="">
+                </div>
+            @endif
+            @endforeach
+          </div>
+          @else
+          <div class="col-md-3 d-flex justify-content-center">
+                <div style="height: 150px; width: 300px; background: rgb(120, 140, 196); margin-bottom: 10px;">
+                    <div style="padding: 4rem; color:white;">
+                        <strong>Advertise</strong>
+                    </div>
+                </div>
+                <div style="height: 150px; width: 300px; background: rgb(120, 140, 196)">
+                    <div style="padding: 4rem; color:white;">
+                        <strong>Advertise</strong>
+                    </div>
+                </div>
+          </div>
+        @endif
+      <div class="mt-3">
+        @if ($adv->count()>0)
+            <marquee behavior="" onmouseover="this.stop();" onmouseout="this.start();" direction="left">
+                @foreach ($adv as $item)
+                    @if ($item->link != null)
+                    <span style="margin-right: 15px;">
+                        <a href="{{ $item->link }}}}"><img  style="height:150px; width: 300px;" src="{{ asset($item->image) }}" alt=""></a>
+                    </span>
+                    @else
+                        <span style="margin-right: 15px;">
+                            <img style="height:150px; width: 300px;" src="{{ asset($item->image) }}" alt="">
+                        </span>
+                    @endif
+                @endforeach
+            </marquee>
+        @endif
+      </div>
     </div>
   </div>
   <div class="partners">
@@ -78,12 +121,17 @@
       ASSOCIATES
       </div>
       <div class="list">
-        <?php
-        for ($i=0; $i < 13; $i++) { ?>
+          @foreach ($patner as $p)
           <div class="item">
-            <img src="{{ asset('front/img/slider.jpg')}}" class="w-100" alt="">
+              @if ($p->link != null)
+                <a href="{{ $p->link }}">
+                    <img src="{{ asset($p->image)}}" class="w-100" alt="">
+                </a>
+              @else
+                <img src="{{ asset($p->image)}}" class="w-100" alt="">
+              @endif
           </div>
-        <?php }?>
+          @endforeach
       </div>
     </div>
   </div>

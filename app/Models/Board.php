@@ -7,6 +7,7 @@
             protected $fillable = ['id','startdate','enddate','active','created_at','updated_at',];
 
           public function boardmember(){
+            //   return Boardmember::where('id',$this->id)->get();
             return $this->hasMany(Boardmember::class);
           }
  }
