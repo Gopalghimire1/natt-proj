@@ -67,8 +67,8 @@
           {!! custom_config('about')->value !!} --}}
         </div>
       </div>
-      @if ($advs->count()>0)
-        <div class="col-md-3">
+      <div class="col-md-3 text-center">
+         @if ($advs->count()>0)
             @foreach ($advs as $item)
             @if ($item->link != null)
                 <div class="mb-3">
@@ -80,9 +80,7 @@
                 </div>
             @endif
             @endforeach
-          </div>
           @else
-          <div class="col-md-3 d-flex justify-content-center">
                 <div style="height: 150px; width: 300px; background: rgb(120, 140, 196); margin-bottom: 10px;">
                     <div style="padding: 4rem; color:white;">
                         <strong>Advertise</strong>
@@ -93,8 +91,8 @@
                         <strong>Advertise</strong>
                     </div>
                 </div>
-          </div>
-        @endif
+                @endif
+        </div>
       <div class="mt-3">
         @if ($adv->count()>0)
             <marquee behavior="" onmouseover="this.stop();" onmouseout="this.start();" direction="left">
