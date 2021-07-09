@@ -4,16 +4,16 @@
 <div class="header"  style="background:#890E4F; color:#ffffff; height:55px; margin:0px;">
     <center><p style="padding:20px; font-size:18px; font-family:"> Galleries</h3></p>
 </div>
-<div>
-<a href="/admin/gallery/show/">
-Show galary
-</a>
-</div>
+
 <div class="container">
     <div class="cell-md-6" style="padding-top:1.5rem;"  >
-        <form method="post" class="inline-form" id="newgallery" >
+        <form method="post" class="inline-form" id="newgallery" enctype="multipart/form-data">
             @csrf
          <input type="text" name="name" placeholder="Enter gallery name" required>
+         <div style="margin-top: 22px;">
+             <input type="file" name="image" placeholder="Select theme image">
+             <small style="margin-left: 5px;">Select theme image</small>
+         </div>
          <span class="button success" onclick="addGallery(document.getElementById('newgallery'));">Add Gallery</span>
         </form>
     </div>
@@ -57,6 +57,7 @@ Show galary
         axios.post('{{ route('admin.gallery.store')}}',formData)
             .then(function(response){
                 console.log(response);
+                $("#newgallery")[0].reset()
                 var galary = response.data.data.gallery;
                 console.log(galary);
                 // var htmltext="asdfasd";

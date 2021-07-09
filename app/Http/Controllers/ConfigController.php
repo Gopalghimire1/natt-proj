@@ -63,11 +63,10 @@ class ConfigController extends Controller
             'type'=>"link_group"
         ],
 
-        'footer_social'=>[
-            'name'=>"Footer Social Icons",
-            'type'=>'link_image_group'
-        ]
-
+        // 'footer_social'=>[
+        //     'name'=>"Footer Social Icons",
+        //     'type'=>'link_image_group'
+        // ]
 
     ];
     public function index(Request $request){

@@ -7,6 +7,7 @@ use App\Models\Area;
 use App\Models\Download;
 use App\Models\Event;
 use App\Models\Galary;
+use App\Models\Galaryimage;
 use App\Models\Menupage;
 use App\Models\News;
 use App\Models\Patner;
@@ -45,6 +46,12 @@ class FrontController extends Controller
     public function gallery(){
         $galleries = Galary::all();
         return view('front.page.gallery',compact('galleries'));
+    }
+
+    public function galleryDetail($id){
+        $gallery = Galary::find($id);
+        $images = Galaryimage::where('galary_id',$id)->get();
+        return view('front.page.gallery_detail',compact('gallery','images'));
     }
 
     public function dynamicPage($id){

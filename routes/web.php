@@ -19,6 +19,8 @@ Route::get('/about-us','FrontController@aboutUs')->name('about');
 Route::get('/contact-us','FrontController@contactUs')->name('contact');
 Route::get('/videos','FrontController@videos')->name('videos');
 Route::get('/galleries','FrontController@gallery')->name('gallery');
+Route::get('/gallerie/{id}','FrontController@galleryDetail')->name('gallery.detail');
+
 Route::get('/downloads','FrontController@downloads')->name('download');
 
 Route::get('/page/{id}','FrontController@dynamicPage')->name('page');

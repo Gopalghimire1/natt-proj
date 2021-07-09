@@ -38,6 +38,7 @@
                 response.data.data.forEach(image => {
                     htmltext='<div class="cell-3" id="image-'+image.id+'"><div class="img-container thumbnail"><img src="'+image.cdn+'" style="width:100%"></div><div><button class="button link" onclick="delImage('+image.id+')">Del</button></div></div>';
                     $('#galleryHolder').append(htmltext);
+                    location.reload();
                 });
             })
             .catch(function(error){

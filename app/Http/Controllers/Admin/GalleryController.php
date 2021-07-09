@@ -20,6 +20,7 @@ class GalleryController extends Controller
      $parsed = $request->all();
      $gallery = new Galary();
      $gallery->name = $parsed['name'];
+     $gallery->image = $parsed['image']->store('back/img/album');
      $gallery->save();
      return response()->json(new Callback(['gallery'=>$gallery]));
     }
@@ -28,6 +29,9 @@ class GalleryController extends Controller
         $parsed = $request->all();
         $gallery = Galary::find($parsed['id']);
         $gallery->name = $parsed['name'];
+        if($request->has('image')){
+           $gallery->image = $parsed['image']->store('back/img/album');
+        }
         $gallery->save();
         return response()->json(new Callback(['gallery'=>$gallery]));
     }
