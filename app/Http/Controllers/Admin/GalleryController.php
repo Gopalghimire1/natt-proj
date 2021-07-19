@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Callback;
 use App\Models\Galary;
 use App\Models\Galaryimage;
+use App\Models\News;
 use App\Models\Image;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,8 @@ class GalleryController extends Controller
     public function delete(Request $request){
         $parsed = $request->all();
         $gallery = Galary::find($parsed['id']);
+        Galaryimage::where('galary_id',$parsed['id'])->delete();
+        News::where('galary_id',$parsed['id'])->delete();
         $gallery->delete();
     }
 

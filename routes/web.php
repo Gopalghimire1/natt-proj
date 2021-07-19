@@ -20,6 +20,7 @@ Route::get('/contact-us','FrontController@contactUs')->name('contact');
 Route::get('/videos','FrontController@videos')->name('videos');
 Route::get('/galleries','FrontController@gallery')->name('gallery');
 Route::get('/gallerie/{id}','FrontController@galleryDetail')->name('gallery.detail');
+Route::post('/message','FrontController@message')->name('message');
 
 Route::get('/downloads','FrontController@downloads')->name('download');
 
@@ -39,7 +40,7 @@ Route::prefix('event')->name('event.')->group(function () {
 Route::prefix('members')->name('member.')->group(function () {
     Route::get('/','MemberController@memberList')->name('list');
     Route::get('/board','MemberController@boardMember')->name('board');
-
+    Route::get('/detail/{id}','MemberController@singleMember')->name('single');
 });
 
 
@@ -51,6 +52,7 @@ Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function
     Route::get('/config','ConfigController@index')->name('config');
     Route::post('/config/store','ConfigController@store')->name('configs.store');
     Route::post('/change-pass','AuthController@changePass')->name('password.change');
+    Route::get('/client-message','AuthController@message')->name('client.message');
 
 
     Route::prefix('news')->name('news.')->group(function () {
@@ -87,6 +89,15 @@ Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function
         Route::get('/edit/{id}/','Admin\MemberController@edit')->name('edit');
         Route::post('/update/{id}','Admin\MemberController@update')->name('update');
         Route::get('/del/{id}/','Admin\MemberController@delete')->name('delete');
+    });
+
+    Route::prefix('other-member')->name('other.member.')->group(function () {
+        Route::get('/','Admin\OtherMemberController@index')->name('index');
+        Route::get('/add/','Admin\OtherMemberController@create')->name('create');
+        Route::post('/store','Admin\OtherMemberController@store')->name('store');
+        Route::get('/edit/{id}/','Admin\OtherMemberController@edit')->name('edit');
+        Route::post('/update/{id}','Admin\OtherMemberController@update')->name('update');
+        Route::get('/del/{id}/','Admin\OtherMemberController@delete')->name('delete');
     });
 
     Route::prefix('board')->name('board.')->group(function () {
@@ -168,6 +179,23 @@ Route::prefix('admin')->name('admin.')->middleware('role:admin')->group(function
         Route::post('/update/{id}','Admin\ActivityController@update')->name('update');
         Route::get('/del/{id}/','Admin\ActivityController@delete')->name('delete');
     });
+
+    Route::prefix('elibrary')->name('elibrary.')->group(function () {
+        Route::post('/store','Admin\ElibraryController@store')->name('store');
+        Route::get('/del/{id}/','Admin\ElibraryController@delete')->name('delete');
+    });
+
+    Route::prefix('leadership')->name('leadership.')->group(function () {
+        Route::post('/store','Admin\LeadershipController@store')->name('store');
+        Route::get('/del/{id}/','Admin\LeadershipController@delete')->name('delete');
+    });
+
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::get('/','AuthController@userList')->name('index');
+        Route::post('/store','AuthController@newUserStore')->name('store');
+        Route::get('/del/{id}/','AuthController@userDelete')->name('delete');
+    });
+
 
 });
 

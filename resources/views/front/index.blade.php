@@ -16,7 +16,10 @@
           <img class="w-100" src="{{ asset(custom_config('banner_image')->value) }}" alt="">
       </div>
     <div class="row my-3">
-      <div class="col-lg-5 h-350">
+        <div class="col-lg-5 h-350">
+            <div class="text-center mb-3" style="background: rgb(230, 226, 226); padding:10px;">
+                <h5> {!! custom_config('about')->value !!}</h5>
+            </div>
         <div class="tabs h-100" id="main-tab">
           <div class="tab-btn-bar" >
             <button class="tab-btn active" data-of="main-tab" data-for="news">News</button>
@@ -123,10 +126,10 @@
           <div class="item">
               @if ($p->link != null)
                 <a href="{{ $p->link }}">
-                    <img src="{{ asset($p->image)}}" class="w-100" alt="">
+                    <img src="{{ asset($p->image)}}" style="height: 100px;" class="w-100" alt="">
                 </a>
               @else
-                <img src="{{ asset($p->image)}}" class="w-100" alt="">
+                <img src="{{ asset($p->image)}}" style="height: 100px;" class="w-100" alt="">
               @endif
           </div>
           @endforeach

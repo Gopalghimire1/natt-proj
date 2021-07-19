@@ -7,13 +7,15 @@
  <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
+
             <form method="post" enctype="multipart/form-data">
-                    
+
                     <div class="form-group">
                         <label>Title</label>
                         <input type="text"  name="title" placeholder="Enter Title" value="{{$info->title}}" required />
                     </div>
-                   
+
                     <div class="form-group">
                         <label>Date</label>
                         <input type="text"  id="nepali-calendar" name="date" value="{{$info->date}}" required>
@@ -37,7 +39,7 @@
 
     </div>
  </section>
- 
+
 @endsection
 
 @section('script')

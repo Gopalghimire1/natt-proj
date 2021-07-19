@@ -7,6 +7,7 @@
 
 <div class="container">
     <div class="cell-md-6" style="padding-top:1.5rem;"  >
+        @include('back.alert')
         <form method="post" class="inline-form" id="newgallery" enctype="multipart/form-data">
             @csrf
          <input type="text" name="name" placeholder="Enter gallery name" required>

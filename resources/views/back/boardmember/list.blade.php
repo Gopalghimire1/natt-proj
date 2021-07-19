@@ -7,10 +7,11 @@
 
 <div class="container" >
                <div style=" padding:2rem 0 0 2rem;">
-                        <a class="button primary" href="/admin/board/add/">Add Board Duration</a>  
+                        <a class="button primary" href="/admin/board/add/">Add Board Duration</a>
+                        <a class="button primary" href="{{ route('admin.member.index')}}">Add Board Member</a>
                 </div>
     <div class="row" style=" padding:2rem;">
-        <div class="cell-md-12" >    
+        <div class="cell-md-12" >
             <table class="table table-border cell-border" data-role="table"  data-pagination-short-mode="true">
                 <thead >
                 <tr>
@@ -35,7 +36,7 @@
                             @endif
                         </td>
                         <td><a class="button link " href="/admin/board/edit/{{$board->id}}/">Edit</a> ||   <a class="button link" href="/admin/board/manage/{{$board->id}}/">Manage</a> ||
-                        <a class="button link" href="/admin/board/del/{{$board->id}}/">Delete</a> 
+                        <a class="button link" href="/admin/board/del/{{$board->id}}/">Delete</a>
                       </td>
                    </tr>
                 @endforeach

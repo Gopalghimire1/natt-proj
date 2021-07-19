@@ -6,14 +6,16 @@
 </div>
  <section class="container">
  <div class="row" style=" padding:2rem;" >
-        <div class="cell-md-11" >
+    <div class="cell-md-11" >
+            @include('back.alert')
             <form method="post" action="{{ route('admin.advertise.store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group container" style="border: 1px black solid; padding-bottom:5px;" >
                     <p>Photo</p>
                     <img src="" style="height: 200px;" id="photo"/>
-                    <input type="file" name="image" data-role="file" onchange="readURL(this);" data-button-title="..." >
+                    <input type="file" name="image" data-role="file" onchange="readURL(this);" data-button-title="..." required>
                 </div>
+
                     <div class="form-group">
                         <label>Link</label>
                         <input type="text"  name="link" placeholder="Enter name of the place" />

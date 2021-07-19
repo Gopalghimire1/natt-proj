@@ -42,7 +42,7 @@
     </li>
 
     <li>
-    <a href="{{ route('admin.member.index')}}">
+    <a href="{{ route('admin.other.member.index')}}">
             <span class="icon"><span class="mif-users"></span></span>
             <span class="caption">Members</span>
         </a>
@@ -107,26 +107,39 @@
     </li>
 
     <li>
-        <a href="{{ route('admin.menu.index')}}">
+            <a href="{{ route('admin.menu.index')}}">
                 <span class="icon"><span class="mif-organization"></span></span>
                 <span class="caption">Menus</span>
             </a>
     </li>
 
-    <li>
-    {{-- <a href="/admin/supporter/">
-            <span class="icon"><span class="mif-envelop"></span></span>
-            <span class="caption">Supporters</span>
+    {{-- <li>
+       <a href="{{ route('admin.menu.manage.page')}}">
+            <span class="icon"><span class="mif-organization"></span></span>
+            <span class="caption">Manage Pages</span>
         </a>
     </li> --}}
 
     <li>
-    <a href="/admin/messages/">
+    <a href="{{ route('admin.client.message')}}">
             <span class="icon"><span class="mif-envelop"></span></span>
             <span class="caption">Client Messages</span>
         </a>
     </li>
 
+    <li>
+       <a href="admin/config">
+            <span class="icon"><span class="mif-notification"></span></span>
+            <span class="caption">Settings</span>
+        </a>
+    </li>
+
+    <li>
+        <a href="{{ route('admin.user.index')}}">
+             <span class="icon"><span class="mif-notification"></span></span>
+             <span class="caption">Users</span>
+         </a>
+     </li>
 
     <li>
     <a href="{{ route('logout')}}">

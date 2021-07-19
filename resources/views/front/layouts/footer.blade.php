@@ -25,7 +25,7 @@
                     </div>
                     <ul>
                         @foreach ($links as $link)
-                        <li><a href="{{ $link->link }}">{{ $link->text }}</a></li>
+                        <li><a href="{{ $link->link }}" style="font-size: 13px;">{{ $link->text }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -37,7 +37,7 @@
                     </div>
                     <ul>
                         @foreach ($links1 as $link)
-                        <li><a href="{{ $link->link }}">{{ $link->text }}</a></li>
+                        <li><a href="{{ $link->link }}" style="font-size: 13px;">{{ $link->text }}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -49,19 +49,22 @@
                     </div>
                     <ul>
                         @foreach ($links2 as $link)
-                        <li><a href="{{ $link->link }}">{{ $link->text }}</a></li>
+                        <li><a href="{{ $link->link }}" style="font-size: 13px;">{{ $link->text }}</a></li>
                         @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3">
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fbrtkhbr%2F&tabs=timeline&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=2721127184868304" width="100%" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                {!! custom_config('theme_facebook')->value !!}
             </div>
         </div>
         <hr>
-        <div class="text-center m-5">
-
+        <div class="text-center m-2">
+            <div class="row last-footer">
+                <div class="container" style="font-size: 12px;">
+                    {!! custom_config('copyright')->value !!}
+                </div>
+             </div>
         </div>
-        <hr>
     </div>
 </div>

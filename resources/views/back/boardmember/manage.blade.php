@@ -7,6 +7,8 @@
 <section class="container">
  <div class="row" style=" padding-top:2rem;" >
         <div class="cell-md-12" >
+            @include('back.alert')
+
             <form method="post" action=""  id="memberadd">
                 @csrf
                     <div class="row">

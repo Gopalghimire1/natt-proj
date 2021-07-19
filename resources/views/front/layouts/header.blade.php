@@ -8,11 +8,21 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Hamburger_icon_white.svg/1024px-Hamburger_icon_white.svg.png" alt="">
 
       </button>
+      <style>
+          .navbar-collapse{
+            max-width: 75% !important;
+          }
+          .navbar-nav{
+            display: flex !important;
+            flex-wrap: wrap !important;
+            justify-content: flex-end;
+            margin-right: auto !important;
+        }
+
+      </style>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ url('/')}}">Home</a>
-          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Members Directory
@@ -42,23 +52,29 @@
             <a class="nav-link" href="{{ route('event.list')}}">Events </a>
           </li>
 
+          @foreach (App\Models\Menu::with('submenu')->where('parent_id',0)->get() as $attr)
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{{ route('page',$attr->id)}}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  {{ $attr->title }}
+                </a>
+                @if (count($attr->submenu))
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    @foreach ($attr->submenu as $item)
+                    <li>
+                        <a class="dropdown-item" href="{{ route('page',$item->id)}}">{{ $item->title}} </a>
+                    </li>
+                    @endforeach
+                </ul>
+                @endif
+            </li>
+          @endforeach
+
           <li class="nav-item">
             <a class="nav-link" href="{{ route('contact')}}">Contact </a>
           </li>
-          @if ($menuCount>0)
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Pages
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                @foreach ($menu as $m)
-                        <li>
-                            <a class="dropdown-item" href="{{ route('page',$m->id)}}">{{ $m->title}} </a>
-                        </li>
-                @endforeach
-                </ul>
-            </li>
-          @endif
+          <li class="nav-item">
+            <a class="nav-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfHK0PHDSq9V8IeNYIJPXjVY4VVzZgAQq9VGUKe7BuVCAuzIg/viewform" target="_balnk">Feedback </a>
+          </li>
         </ul>
       </div>
     </div>

@@ -7,6 +7,8 @@
  <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-11" >
+            @include('back.alert')
+
             <form method="post" action="{{ route('admin.download.store')}}" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">

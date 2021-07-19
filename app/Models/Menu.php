@@ -26,12 +26,15 @@ public function getName(){
     if($this->parent_id==0){
         return $this->title;
     }else{
-        $p=$this->parent();
-        if($p->parent_id==0){
-            return $p->title.' >> '.$this->title;
-        }else{
-            $pp=$p->parent();
-            return $pp->title.' >> '.$p->title.' >> '.$this->title;
+
+        if($this->parent() != null){
+            $p=$this->parent();
+            if($p->parent_id==0){
+                return $p->title.' >> '.$this->title;
+            }else{
+                $pp=$p->parent();
+                return $pp->title.' >> '.$p->title.' >> '.$this->title;
+            }
         }
     }
 }

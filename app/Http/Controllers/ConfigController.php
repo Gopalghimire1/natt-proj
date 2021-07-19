@@ -24,10 +24,12 @@ class ConfigController extends Controller
             "name"=>"Theme Image",
             'type'=>"image"
         ],
+
         'theme_video'=>[
             "name" =>"Theme Video",
             "type" => "desc"
         ],
+
         'about'=>[
             "name" =>"Short About For Home page",
             "type" => "desc"
@@ -61,6 +63,16 @@ class ConfigController extends Controller
         'footer_3_links'=>[
             "name"=>"Footer Title Third links",
             'type'=>"link_group"
+        ],
+
+        'theme_facebook'=>[
+            "name" =>"Facebook page Theme",
+            "type" => "desc"
+        ],
+
+        'copyright'=>[
+            "name" =>"Coyright Section",
+            "type" => "desc"
         ],
 
         // 'footer_social'=>[

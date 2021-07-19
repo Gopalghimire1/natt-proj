@@ -1,17 +1,17 @@
 @extends('back.app')
-@section('title','Members listing')
+@section('title','Board Members listing')
 @section('content')
 <div class="header"  style="background:#890E4F; color:#ffffff; height:55px; margin:0px;">
-    <center><p style="padding:20px; font-size:18px; font-family:"> Members Listing</h3></p>
+    <center><p style="padding:20px; font-size:18px; font-family:">Board Members Listing</h3></p>
 </div>
 
 
 <div class="container" >
                <div style=" padding:2rem 0 0 2rem;">
-                        <a class="button primary" href="/admin/member/add/">Add Member</a>  
+                        <a class="button primary" href="/admin/member/add/">Add Member</a>
                 </div>
     <div class="row" style=" padding:2rem;">
-        <div class="cell-md-12" >    
+        <div class="cell-md-12" >
             <table class="table table-border cell-border" data-role="table"  data-pagination-short-mode="true">
                 <thead >
                 <tr>
@@ -39,7 +39,7 @@
                     <!-- <td>{{$member->education}}</td>
                     <td>{{$member->activity}}</td>
                     <td>{{$member->descr}}</td> -->
-                    <td><a class="button link" href="/admin/member/edit/{{$member->id}}/">Edit</a> || 
+                    <td><a class="button link" href="/admin/member/edit/{{$member->id}}/">Edit</a> ||
                         <a class="button link" href="/admin/member/del/{{$member->id}}/">Delete</a> </td>
                 </tr>
                 @endforeach

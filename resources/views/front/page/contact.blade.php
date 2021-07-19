@@ -24,40 +24,49 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8 col-12">
-                    <h4 class="mb-50">Send a message</h4>
-                    <hr>
-                    <form action="/mcci/messages/" method="post">
+                 @include('back.alert')
+
+                    <h4 class="widget-text">Contact Information</h4>
+                    <form action="{{ route('message')}}" method="post">
+                        @csrf
                         <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-12 col-12">
                                 <div class="form-group">
+                                    <label for="name">Name (Required)</label>
                                     <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-12 col-12 mt-3">
                                 <div class="form-group">
+                                    <label for="email">Email (Required)</label>
                                     <input type="email" class="form-control" name="email" id="email" placeholder="Your E-mail" required>
                                 </div>
                             </div>
-                            <div class="col-12 mt-1">
+                            <div class="col-12 mt-3">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="sub" id="subject" placeholder="Your Subject" required>
+                                    <label for="Tele">Telephone (Required)</label>
+                                    <input type="number" min="0" class="form-control" name="phone" id="subject" placeholder="Your number" required>
                                 </div>
                             </div>
-                            <div class="col-12 mt-1">
+                            <div class="col-12 mt-3">
                                 <div class="form-group">
-                                    <textarea name="detail" class="form-control" id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+                                    <label for="name">Message (Required)</label>
+                                    <textarea name="message" class="form-control" id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
                                 </div>
                             </div>
-                            <div class="col-12 mt-1">
+                            <div class="col-12 mt-3">
                                 <button class="btn btn-primary mt-30" type="submit">Send</button>
                             </div>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-4 col-12">
-                    <h4 class="mb-50">Contact Information</h4>
-                    <hr>
-                </div>
+                    <div class="col-md-4 col-12">
+						<h4 class="widget-text">Contact Information</h4>
+						<p><strong>Nepal Association of Tour &amp; Travel Agents (NATTA)</strong><br>
+						P.O Box: 362<br>                        Gairidhara, Naxal, Kathmandu, Nepal<br><br>
+                        <strong>Tel:</strong>+977-1-4418661, 4419409<br>						<strong>Fax:</strong>+977-1-4418684 <br><br>
+						<strong>EMAILS <br>Admin: </strong>nattaadmn@gmail.com <br>						<strong>CEO: </strong>ceo@natta.org.np<br>						<strong>Information &amp; Communication: </strong>info@natta.org.np<br>						<strong>Finance: </strong>finance@natta.org.np</p>
+                    </div>
             </div>
         </div>
       </div>

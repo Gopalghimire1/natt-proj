@@ -19,33 +19,77 @@
         </div>
     </div>
 </section>
+<style>
+    .al-map{
+        justify-content: center;flex-wrap:wrap;display:flex;
+        padding:10px 0px;
+        background:var(--primary-color);
+        /* margin:0px -15px; */
+    }
+    .al-link{
+        height:30px;
+        width: 30px;
+        color:white;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 
 <div class="container">
-    <div class="row mt-5 mb-5">
-        @foreach ($member as $secretary)
-        <div class="row">
-            <div class="col-12 col-lg-3">
-               <img src="{{ asset($secretary->image) }}" alt="" style="height:150px; width:170;float:">
+    <div class="card shadow">
+        <div class="p-4">
+            <div>
+                <div class="row m-0">
+                    <div class="col-md-12">
+                        <input type="text" id="search" class="search form-control  " placeholder="Search Member" oninput="searchMember(this)">
+                    </div>
+                </div>
             </div>
-
-            <div class="col-12 col-lg-9">
-                 <div style="line-hight:10px;">
-                    <ul style="font-size: 15px;
-                                font-weight: 600;
-                                color: #003679;
-                                ">
-                        <li style="padding:4px 0;"><span class="text-dark">Name </span>:  {{$secretary->name}}</li>
-                        <li style="padding:4px 0;"><span class="text-dark">Address </span>: {{$secretary->address}}</li>
-                        <li style="padding:4px 0;"><span class="text-dark">Mobile </span>: {{$secretary->phone}}</li>
-                        <li style="padding:4px 0;"><span class="text-dark">Email </span>: {{$secretary->email}}</li>
-                    </ul>
-
-                 </div>
+            <hr>
+            <div class="al-map  mt-3">
+                @foreach ($arr as $item)
+                    <a class="al-link" href="#{{$item}}">{{$item}}</a>
+                @endforeach
+            </div>
+            <hr>
+            <div class="row mt-5 mb-5 m-0">
+                @foreach ($sorted as $key=>$member)
+                    <h4>
+                        {{$key}}
+                        <a name="{{strtoupper($key)}}"></a>
+                    </h4>
+                    @foreach ($member as $mem)
+                        <div class="searchable" data-value="{{$mem->company}}" style="border:1px #ccc solid; background:rgb(231, 224, 224); border-radius: 10px;">
+                            <div style="margin: 10px;"><a href="{{ route('member.single',$mem->id)}}" style="text-decoration: none">{{ $mem->company }} </a> [ Member ID: {{ $mem->memberid }} ]</div>
+                        </div>
+                    @endforeach
+                @endforeach
             </div>
         </div>
-        <hr>
-        @endforeach
     </div>
 </div>
 
+@endsection
+@section('js')
+    <script>
+        function searchMember(ele){
+            keyword=ele.value.toLowerCase();
+            if(keyword.length==0){
+                $('.searchable').removeClass('d-none');
+            }else{
+                $('.searchable').each(function(){
+                    name=this.dataset.value.toLowerCase();
+                    console.log(name);
+                    if(name.startsWith(keyword)){
+                        $('.searchable').removeClass('d-none');
+
+                    }else{
+                        $('.searchable').addClass('d-none');
+                    }
+                });
+            }
+        }
+    </script>
 @endsection

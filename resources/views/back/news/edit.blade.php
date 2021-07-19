@@ -9,6 +9,8 @@
 <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
+
             <form method="post" action="{{ route('admin.news.update',$news->id)}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -50,7 +52,7 @@
                     </div>
                     <div class="form-group">
                         <button class="button success">Submit data</button>
-                        <input type="button" class="button" value="Cancel" onclick="window.location.href='/admin/news/list/'">
+                        <input type="button" class="button" value="Cancel" onclick="window.location.href='{{ route('admin.news.index')}}'">
                     </div>
             </form>
 

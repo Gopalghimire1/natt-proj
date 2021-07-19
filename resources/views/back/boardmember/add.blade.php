@@ -8,7 +8,9 @@
  <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
             <form method="post" action="{{ route('admin.board.store') }}" enctype="multipart/form-data">
+
                 @csrf
                     <div class="form-group">
                         <label>Start Date</label>
@@ -29,7 +31,7 @@
 
                     <div class="form-group">
                         <button class="button success">Submit data</button>
-                        <input type="button" class="button" value="Cancel" onclick="window.location.href='/admin/board/list/'">
+                        <input type="button" class="button" value="Cancel" onclick="window.location.href='{{ route('admin.board.index')}}'">
                     </div>
             </form>
 

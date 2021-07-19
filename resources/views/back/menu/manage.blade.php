@@ -5,8 +5,10 @@
     <center><p style="padding:20px; font-size:18px; font-family:"> Manu page manage</h3></p>
 </div>
  <section class="container">
- <div class="row" style=" padding:2rem;" >
+  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
+
             <form method="post" action="{{ route('admin.menu.manage.update',$page->id)}}" enctype="multipart/form-data">
                 @csrf
                     <div class="form-group">
@@ -38,7 +40,9 @@
 
         </div>
 
-    </div>
+  </div>
+
+
  </section>
 
 @endsection

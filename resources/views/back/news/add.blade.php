@@ -9,6 +9,8 @@
 <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
+
             <form method="post" action="{{ route('admin.news.store')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -28,7 +30,7 @@
                         <label>Description</label>
                         <textarea  name="descr" ></textarea>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Related Gallery</label>
                         <select name="galary_id" id="galary_id" data-role="select" required>
                                <option value="">---Select Gallery---</option>
@@ -36,16 +38,16 @@
                                <option value="{{$galary->id}}">{{$galary->name}}</option>
                             @endforeach
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="form-group container" style="border: 1px black solid; padding-bottom:5px;" >
                         <p>Feature Image</p>
                         <img src="" style="height: 200px;" id="photo"/>
-                        <input type="file" name="image" data-role="file" onchange="readURL(this);" data-button-title="..." >
+                        <input type="file" name="image" data-role="file" onchange="readURL(this);" data-button-title="..." required>
                     </div>
 
                     <div class="form-group">
                         <button class="button success">Submit data</button>
-                        <input type="button" class="button" value="Cancel" onclick="window.location.href='/admin/news/list/'">
+                        <input type="button" class="button" value="Cancel" onclick="window.location.href='{{ route('admin.news.index')}}'">
                     </div>
             </form>
 

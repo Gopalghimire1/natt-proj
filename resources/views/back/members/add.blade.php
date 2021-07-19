@@ -1,12 +1,14 @@
 @extends('back.app')
-@section('title','Member addition')
+@section('title','Board Member addition')
 @section('content')
 <div class="header"  style="background:#890E4F; color:#ffffff; height:55px; margin:0px;">
-    <center><p style="padding:20px; font-size:18px; font-family:"> Member Addition</h3></p>
+    <center><p style="padding:20px; font-size:18px; font-family:">Board Member Addition</h3></p>
 </div>
  <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
+
             <form method="post" action="{{ route('admin.member.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
@@ -25,19 +27,19 @@
                         <label>Email Address</label>
                         <input type="email"  name="email" placeholder="Enter email" required/>
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>Qualification</label>
                         <input type="text"  name="education" placeholder="Enter qualification" required/>
                     </div>
                     <div class="form-group">
                         <label>Activity</label>
                         <input type="text"  name="activity" placeholder="Enter related ativity with field" required/>
-                    </div>
+                    </div> --}}
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label>In Details</label>
                         <textarea data-role="textarea" name="descr"></textarea>
-                    </div>
+                    </div> --}}
                     <div class="form-group container" style="border: 1px black solid; padding-bottom:5px;" >
                         <p>Photo</p>
                         <img src="" style="height: 200px;" id="photo"/>

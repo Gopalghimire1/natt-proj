@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Elibrary;
+use App\Models\Leadership;
 use App\Models\Menu;
 use App\Models\Menupage;
 use Illuminate\Http\Request;
@@ -18,6 +20,7 @@ class MenuController extends Controller
         $menu = new Menu();
         $menu->title = $request->title;
         $menu->parent_id = $request->parent_id;
+        $menu->type = $request->type;
         $menu->save();
         $page = new Menupage();
         $page->title = "Demo Test";
@@ -30,8 +33,14 @@ class MenuController extends Controller
 
     public function delete($id){
         $menu = Menu::where('id',$id)->first();
-        $page = Menupage::where('menu_id',$id)->first();
-        $page->delete();
+        if($menu->type == 1){
+            $page = Menupage::where('menu_id',$id)->first();
+            $page->delete();
+        }else if($menu->type ==2){
+           return redirect()->back()->with('warning','You con not delete this one!.');
+        }else{
+           return redirect()->back()->with('warning','You con not delete this one!.');
+        }
         $menu->delete();
         return redirect()->back()->with('success','Menu deleted successfully.');
     }
@@ -40,8 +49,16 @@ class MenuController extends Controller
     public function manage($id){
         $menu = Menu::find($id);
         $page = Menupage::where('menu_id',$menu->id)->first();
+        $elibrary = Elibrary::latest()->where('menu_id',$id)->get();
+        $leaders = Leadership::latest()->where('menu_id',$id)->get();
         // dd($page);
-        return view('back.menu.manage',compact('menu','page'));
+        if($menu->type == 1){
+            return view('back.menu.manage',compact('menu','page'));
+        }else if($menu->type == 2){
+            return view('back.menu.manage1',compact('menu','elibrary'));
+        }else{
+            return view('back.menu.manage2',compact('menu','leaders'));
+        }
     }
 
     public function manageUpdate(Request $request, $id){
@@ -52,5 +69,9 @@ class MenuController extends Controller
         $page->image = $request->image->store('back/img/pages');
         $page->save();
         return redirect()->back()->with('success','Menu page updated successfully.');
+    }
+
+    public function managePage(){
+        return view('back.menu.manage_page');
     }
 }

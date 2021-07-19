@@ -27,7 +27,7 @@
                 <img src="{{ asset($news->image )}}" class="w-100" alt="">
             </div>
             <div class="col-lg-8 col-12 mb-4">
-                <h4>{{ $news->title }}</h4>
+                <h4><a href="{{ route('news.single',$news->id)}}"> {{ $news->title }} </a></h4>
                 <div class="news-date">
                     &#128197; {{ $news->published}}
                 </div>

@@ -5,6 +5,8 @@
     <center><p style="padding:20px; font-size:18px; font-family:"> Gallery Manage</h3></p>
 </div>
 <div style="padding-top:1em;">
+    @include('back.alert')
+
     <div >
         <form action="" class="inline-form" entype="multipart/form-data" id="imageupload">
             <input type="hidden" name="galary_id" value="{{$gallery->id}}">
@@ -17,7 +19,7 @@
         @foreach($gallery->Galaryimages as $galleryimage)
             <div class="cell-3" id="image-{{$galleryimage->id}}">
                 <div class="img-container thumbnail">
-                    <img src="{{ asset($galleryimage->image->filepath) }}" style="width:100%">
+                    <img src="{{ asset($galleryimage->image->filepath) }}" style="height: 100px; width:100%">
                 </div>
                 <div>
                     <button class="button link" onclick="delImage({{$galleryimage->id}})">Del</button>

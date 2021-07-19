@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/assets/back/css/metro-all.css">
+    <link rel="stylesheet" href="{{ asset('back/css/metro-all.css') }}">
     <title>Messagess</title>
-   
+
 </head>
 
 <body >
@@ -19,7 +19,7 @@
     <tr>
         <th>Name</th>
         <th>Email</th>
-        <th>Subjects</th>
+        <th>Number</th>
         <th>Message</th>
         <th>Date</th>
     </tr>
@@ -39,8 +39,8 @@
 </table>
 
 </div>
-<script src="/assets/common/js/jquery.js"></script>
-<script src="/assets/back/js/metro.js"></script>
+<script src="{{ asset('common/js/jquery.js') }}"></script>
+<script src="{{ asset('back/js/metro.js') }}"></script>
 
 </body>
 </html>

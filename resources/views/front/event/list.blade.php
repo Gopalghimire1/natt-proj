@@ -28,7 +28,7 @@
 
             </div>
             <div class="col-lg-8 col-12 mb-4">
-                <h4>{{ $event->title }} ,{{ $event->address }}</h4>
+                <h4><a href="{{ route('event.single',$event->id)}}"> {{ $event->title }} ,{{ $event->address }}</a></h4>
                 <div class="news-date">
                     &#128197; {{ $event->eventdate }}, {{ $event->eventtime }}, {{ $event->address }}
                 </div>

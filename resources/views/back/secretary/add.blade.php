@@ -7,8 +7,10 @@
  <section class="container">
  <div class="row" style=" padding:2rem;" >
         <div class="cell-md-8" >
+            @include('back.alert')
+
             <form method="post" enctype="multipart/form-data">
-                    
+
                     <div class="form-group">
                         <label>Member Name</label>
                         <input type="text"  name="name" placeholder="Enter name" required/>
@@ -29,7 +31,7 @@
                         <label>Email Address</label>
                         <input type="email"  name="email" placeholder="Enter email" required/>
                     </div>
-                  
+
                     <div class="form-group container" style="border: 1px black solid; padding-bottom:5px;" >
                         <p>Photo</p>
                         <img src="" style="height: 200px;" id="photo"/>
@@ -45,7 +47,7 @@
 
     </div>
  </section>
- 
+
 @endsection
 
 @section('script')
@@ -54,12 +56,12 @@
         function readURL(input) {
          if (input.files && input.files[0]) {
              var reader = new FileReader();
- 
+
              reader.onload = function (e) {
                  $('#photo')
                      .attr('src', e.target.result);
              };
- 
+
              reader.readAsDataURL(input.files[0]);
          }
      }

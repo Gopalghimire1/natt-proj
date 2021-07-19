@@ -33,7 +33,7 @@
                     @endif
 
                     <div class="detail">
-                        <p>{{ $pageIitem->subdetail }}</p>
+                        <p>{!! $pageIitem->subdetail !!}</p>
                     </div>
 
                     <div class="detail">

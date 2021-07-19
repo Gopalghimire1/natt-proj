@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Boardmember;
 use App\Models\Member;
 use Illuminate\Http\Request;
 
@@ -23,10 +24,7 @@ class MemberController extends Controller
         $mbrs->name = $parsed['name'];
         $mbrs->address = $parsed['address'];
         $mbrs->phone = $parsed['phone'];
-        $mbrs->education = $parsed['education'];
         $mbrs->email = $parsed['email'];
-        $mbrs->descr = $parsed['descr'];
-        $mbrs->activity = $parsed['activity'];
         $mbrs->image = $parsed['image']->store('back/img/member');
         $mbrs->save();
         return redirect()->back()->with('success','Member added successfully !');
@@ -43,10 +41,7 @@ class MemberController extends Controller
         $mbrs->name = $parsed['name'];
         $mbrs->address = $parsed['address'];
         $mbrs->phone = $parsed['phone'];
-        $mbrs->education = $parsed['education'];
         $mbrs->email = $parsed['email'];
-        $mbrs->descr = $parsed['descr'];
-        $mbrs->activity = $parsed['activity'];
 
         $mbrs->image = $parsed['image']->store('back/img/member');
         $mbrs->save();
@@ -55,10 +50,12 @@ class MemberController extends Controller
 
     public function delete($id){
         $news= Member::where('id',$id)->first();
+        Boardmember::where('member_id',$id)->delete();
         $news->delete();
         return redirect()->back()->with('success','Member deleted successfully !');
-
     }
+
+
 
 
 }

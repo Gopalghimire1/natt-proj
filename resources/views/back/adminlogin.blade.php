@@ -35,6 +35,7 @@
 </head>
 
 <body class="h-vh-100 bg-brandColor2">
+    @include('back.alert')
 
     <form class="login-form bg-white p-6 mx-auto border bd-default win-shadow"
           data-role="validator"

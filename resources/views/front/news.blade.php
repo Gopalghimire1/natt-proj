@@ -1,5 +1,5 @@
 <div class="p-3">
-   @foreach ($news as $new)
+   @foreach ($newstab as $new)
 
    <div class="single-news">
        <div class="news-title">
